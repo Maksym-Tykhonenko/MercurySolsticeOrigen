@@ -168,7 +168,7 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
   const handleNavigationStateChange = navState => {
     const {url} = navState;
     const {mainDocumentURL} = navState;
-    //console.log('NavigationState: ', navState);
+    console.log('NavigationState: ', navState);
     if (
       url.includes(
         'https://api.paymentiq.io/paymentiq/api/piq-redirect-assistance',
@@ -229,7 +229,7 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
 
   const onShouldStartLoadWithRequest = event => {
     const {url} = event;
-    //console.log('onShouldStartLoadWithRequest========> ', event);
+    console.log('onShouldStartLoadWithRequest========> ', event);
 
     if (url.startsWith('mailto:')) {
       Linking.openURL(url);
@@ -325,6 +325,12 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
       console.log('Перехоплений URL:', url);
       Alert.alert(`Wait a few seconds, the loading process is underway...`);
       // Ви можете використати Linking для обробки
+      Linking.openURL(url).catch(err => {
+        //console.error('Помилка при відкритті URL:', err);
+      });
+
+      return false; // Забороняємо WebView завантажувати цей URL
+    } else if (url.startsWith('nl.abnamro.deeplink.psd2.consent://')) {
       Linking.openURL(url).catch(err => {
         //console.error('Помилка при відкритті URL:', err);
       });
