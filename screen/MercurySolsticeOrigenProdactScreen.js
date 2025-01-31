@@ -155,6 +155,7 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
   ///////////////////////////
 
   const [redirectUrl, setRedirectUrl] = useState(product);
+  //console.log('redirectUrl====>', redirectUrl);
   const [checkNineUrl, setCheckNineUrl] = useState();
   //console.log('checkNineUrl====>', checkNineUrl);
 
@@ -214,7 +215,11 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
       //Linking.openURL(url);
       //return false;
       return; // Дозволити навігацію для цих URL-адрес
-    } else if (mainDocumentURL === 'https://winspirit.best/') {
+    } else if (
+      mainDocumentURL === 'https://winspirit.best/' ||
+      url.includes('https://malinacasino25.com') ||
+      url.includes('https://dazardbet3.com')
+    ) {
       // Умова для ввімкнення/вимкнення onOpenWindow
       setEnableOnOpenWindow(true);
     } else {
@@ -488,5 +493,32 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
     </SafeAreaView>
   );
 };
-
+{
+  /**onOpenWindow={syntheticEvent => {
+          const {nativeEvent} = syntheticEvent;
+          const {targetUrl} = nativeEvent;
+          //console.log('syntheticEvent==>', syntheticEvent);
+          console.log('nativeEvent', nativeEvent);
+          //console.log('targetUrl', targetUrl);
+          if (nativeEvent.targetUrl === 'https://pay.neosurf.com/') {
+            //console.log('Hello!!!!!!!!!!!!!!!!!!!!!');
+            //Linking.openURL('https://www.eneba.com/checkout/payment');
+            refWebview.current.injectJavaScript(
+              `window.location.href = 'https://www.myneosurf.com/en_GB/application/login/client'`,
+            );
+            return false;
+          } else if (
+            nativeEvent.targetUrl.includes(
+              'https://checkout.payop.com/en/payment/invoice-preprocessing/',
+            )
+          ) {
+            //console.log('Hello!!!!!!!!!!!!!!!!!!!!!');
+            //Linking.openURL('https://www.eneba.com/checkout/payment');
+            refWebview.current.injectJavaScript(
+              `window.location.href = '${nativeEvent.targetUrl}'`,
+            );
+            return false;
+          }
+        }} */
+}
 export default MercurySolsticeOrigenProdactScreen;
