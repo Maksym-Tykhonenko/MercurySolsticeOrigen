@@ -3,7 +3,7 @@ workflows:
     name: Mercury Solstice
     max_build_duration: 120
     integrations:
-      app_store_connect: MercurySolsticeCodemagic
+      app_store_connect: MercurySolsticeAPI Key New
     environment:
       ios_signing:
         distribution_type: app_store
