@@ -93,7 +93,7 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
     'nl-snsbank-sign://',
     'nl-asnbank-sign://',
     'triodosmobilebanking',
-    'revolut',
+    'revolut://',
   ];
 
   //**івент push_subscribe
@@ -332,6 +332,18 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
       return false; // Забороняємо WebView завантажувати цей URL
     } else if (url.startsWith('nl.abnamro.deeplink.psd2.consent://')) {
       Linking.openURL(url).catch(err => {
+        //console.error('Помилка при відкритті URL:', err);
+      });
+
+      return false; // Забороняємо WebView завантажувати цей URL
+    } else if (url.includes('nl-snsbank-sign')) {
+      Linking.openURL('nl-snsbank-sign://').catch(err => {
+        //console.error('Помилка при відкритті URL:', err);
+      });
+
+      return false; // Забороняємо WebView завантажувати цей URL
+    } else if (url.includes('nl-asnbank-sign')) {
+      Linking.openURL('nl-asnbank-sign://').catch(err => {
         //console.error('Помилка при відкритті URL:', err);
       });
 
