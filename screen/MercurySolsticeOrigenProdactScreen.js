@@ -342,7 +342,7 @@ const MercurySolsticeOrigenProdactScreen = ({navigation, route}) => {
       });
 
       return false; // Забороняємо WebView завантажувати цей URL
-    } else if (url.includes('nl-asnbank-sign')) {
+    } else if (url.includes('asnbank.nl')) {
       Linking.openURL('nl-asnbank-sign://').catch(err => {
         //console.error('Помилка при відкритті URL:', err);
       });
